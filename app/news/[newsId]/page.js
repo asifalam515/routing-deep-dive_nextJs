@@ -1,9 +1,13 @@
 import { DUMMY_NEWS } from "@/dummy-news";
+import { notFound } from "next/navigation";
 import React from "react";
 
 const DynamicNews = ({ params }) => {
   const newsSlug = params.newsId;
   const singleNews = DUMMY_NEWS.find((newsItem) => newsItem.slug === newsSlug);
+  if (!singleNews) {
+    notFound();
+  }
   return (
     <article>
       <header>
