@@ -3,6 +3,7 @@ import {
   getAvailableNewsMonths,
   getAvailableNewsYears,
   getNewsForYear,
+  getNewsForYearAndMonth,
 } from "@/lib/news";
 import Link from "next/link";
 import React from "react";
@@ -17,9 +18,20 @@ const FilteredNewsPage = ({ params }) => {
     news = getNewsForYear(selectedYear);
     links = getAvailableNewsMonths(selectedYear);
   }
+  if (selectedYear && selectedMonth) {
+    news = getNewsForYearAndMonth(selectedYear, selectedMonth);
+    links = [];
+  }
   let newsContent = <p>No news Content found for the selected item</p>;
   if (news && news.length > 0) {
     newsContent = <NewsList news={news}></NewsList>;
+  }
+  if (
+    (selectedYear && !getAvailableNewsYears().includes(+selectedYear)) ||
+    (selectedMonth &&
+      !getAvailableNewsMonths(selectedYear).includes(+selectedMonth))
+  ) {
+    throw new Error("Invalid Filter.");
   }
   return (
     <>
