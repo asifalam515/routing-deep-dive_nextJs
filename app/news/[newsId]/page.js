@@ -1,4 +1,5 @@
 import { DUMMY_NEWS } from "@/dummy-news";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -11,7 +12,13 @@ const DynamicNews = ({ params }) => {
   return (
     <article>
       <header>
-        <img src={`/images/news/${singleNews.image}`} alt={singleNews.title} />
+        <Link href={`/news/${singleNews.slug}/image`}>
+          {" "}
+          <img
+            src={`/images/news/${singleNews.image}`}
+            alt={singleNews.title}
+          />
+        </Link>
         <h1> {singleNews.title}</h1>
         <time datetime={singleNews.date}>{singleNews.date} </time>
 
