@@ -26,10 +26,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/news/not-found.js"
     ],
-    "/news/[newsId]/page": [
+    "/news/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/news/[newsId]/page.js"
+      "static/chunks/app/news/layout.js"
     ]
   }
 }
